@@ -73,8 +73,8 @@ dependencies {
 	// <<< Database related (1)
 
 	// >>> Cloud related (1)
-	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-kubernetes
-	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-kubernetes', version: '1.0.2.RELEASE'
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-kubernetes-dependencies
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-kubernetes-dependencies', version: '1.0.2.RELEASE', ext: 'pom'
 	// <<< Cloud related (1)
 }
 
