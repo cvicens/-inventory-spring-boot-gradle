@@ -6,15 +6,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-// Cloud
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.redhat.cloudnative.inventory", "com.redhat.cloudnative.inventory.api" , "org.openapitools.configuration"})
-// Cloud
-@EnableDiscoveryClient
 public class OpenAPI2SpringBoot implements CommandLineRunner {
 
     @Override
