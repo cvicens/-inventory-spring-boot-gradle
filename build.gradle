@@ -14,11 +14,29 @@ plugins {
 	id 'org.springframework.boot' version '2.1.7.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
+
+	// >>> Sonarqube (1)
+	id "org.sonarqube" version "2.6.2"
+	// <<< Sonarqube (1)
 }
 
 // >>> OpenAPI (2)
 apply plugin: 'org.openapi.generator'
 // <<< OpenAPI (2) 
+
+// >>> Sonarqube (2)
+task getVersion {
+	doLast {
+        println version
+    }
+}
+
+sonarqube {
+    properties {
+        property 'sonar.projectName', 'Inventory Service 98 Gradle SonarQube Scanner' + ' [' + getVersion() + ']'
+    }
+}
+// <<< Sonarqube (2)
 
 group = 'com.redhat.cloudnative'
 version = '0.0.1-SNAPSHOT'
