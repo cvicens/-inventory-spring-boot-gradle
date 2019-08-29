@@ -1,0 +1,58 @@
+// >>> OpenAPI (1)
+buildscript {
+  repositories {
+    mavenLocal()
+    mavenCentral()
+  }
+  dependencies {
+    classpath "org.openapitools:openapi-generator-gradle-plugin:3.3.4"
+  }
+}
+// <<< OpenAPI (1)
+
+plugins {
+	id 'org.springframework.boot' version '2.1.7.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+// >>> OpenAPI (2)
+apply plugin: 'org.openapi.generator'
+// <<< OpenAPI (2) 
+
+group = 'com.redhat.cloudnative'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// >>> OpenAPI (3)
+	// https://mvnrepository.com/artifact/io.swagger/swagger-core
+	compile group: 'io.swagger', name: 'swagger-core', version: '1.5.0'
+	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.8.0'
+	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.8.0'
+	// <<< OpenAPI (3)
+}
+
+// >>> OpenAPI (4)
+openApiGenerate{
+	generatorName = "spring"
+	inputSpec = "$rootDir/src/main/resources/inventory.yaml".toString()
+	outputDir = "$rootDir".toString() 
+	apiPackage = "com.redhat.cloudnative.inventory.api"
+	invokerPackage = "com.redhat.cloudnative.inventory"
+	modelPackage = "com.redhat.cloudnative.inventory.model" 
+	modelFilesConstrainedTo = []
+	configOptions = [
+		dateLibrary: "java8"
+	]
+}
+// <<< OpenAPI (4)
