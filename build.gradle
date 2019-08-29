@@ -71,6 +71,11 @@ dependencies {
 	runtimeOnly('com.h2database:h2')
 	runtimeOnly('org.postgresql:postgresql')
 	// <<< Database related (1)
+
+	// >>> Cloud related (1)
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-kubernetes
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-kubernetes', version: '1.0.2.RELEASE'
+	// <<< Cloud related (1)
 }
 
 // >>> OpenAPI (4)
